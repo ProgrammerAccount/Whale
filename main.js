@@ -20,7 +20,7 @@ function checkKey(e) {
     else if (e.keyCode == '39') {
       xWhale=xWhale+5;
     }
-
+//asd
 }
 positionBall.kat= Math.random()*90;
 var canvas = document.getElementById("blue");
