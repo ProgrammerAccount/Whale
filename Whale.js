@@ -5,20 +5,24 @@
  */
 /*global ctx, canvas, context, angle*/
 var angle=0;
+var directionLeft=false;
 function drawEye(bool)
 {
+    var width=-85;
+    if(directionLeft) width=85;
+    
     if(bool)
     {
     ctx.save();
-    ctx.moveTo(85,-20);
+    ctx.moveTo(width,-20);
     ctx.fillStyle="#ffffff";
-    ctx.arc(85 ,-20,16,0,Math.PI);  
+    ctx.arc(width ,-20,16,0,Math.PI);  
     ctx.fill();
     ctx.closePath();
     ctx.beginPath();
     ctx.fillStyle="#000000";
-    ctx.moveTo(85,-20);
-    ctx.arc(85 ,-20,8,0,Math.PI);
+    ctx.moveTo(width,-20);
+    ctx.arc(width ,-20,8,0,Math.PI);
     ctx.closePath();
     ctx.fill();
     ctx.restore();
@@ -26,15 +30,15 @@ function drawEye(bool)
     else // wyswietl połowe (mrugnięte ) oko
     {
     ctx.save();
-    ctx.moveTo(85,-20);
+    ctx.moveTo(width,-20);
     ctx.fillStyle="#ffffff";
-    ctx.arc(85 ,-20,16,0,Math.PI*2); // kąt podany w radiantach  
+    ctx.arc(width ,-20,16,0,Math.PI*2); // kąt podany w radiantach  
     ctx.fill();
     ctx.closePath();
     ctx.beginPath();
     ctx.fillStyle="#000000";
-    ctx.moveTo(85,-20);
-    ctx.arc(85 ,-20,8,0,Math.PI*2);// kąt podany w radiantach 
+    ctx.moveTo(width,-20);
+    ctx.arc(width,-20,8,0,Math.PI*2);// kąt podany w radiantach 
     ctx.closePath();
     ctx.fill();
     ctx.restore();
@@ -42,8 +46,9 @@ function drawEye(bool)
 }
 function drawWhale(angle)
 {
-    
-    var img=document.getElementById("whale");  
+ 
+    var img=document.getElementById("whaleDL");  
+       if(directionLeft===true) img=document.getElementById("whaleDR");  
     ctx.save();
     ctx.translate(xWhale,yWhale);
     ctx.rotate(angle*Math.PI/180);    
@@ -58,9 +63,11 @@ function moveWhale(e)
     
        if (e.keyCode == '37') {
         xWhale=xWhale+10;
+        
     }
     else if (e.keyCode == '39') {
        xWhale=xWhale-10;
+        directionLeft=true;
     }
 }
 
