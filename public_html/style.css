@@ -1,0 +1,12 @@
+#blue {
+
+    background-color: #EEE;
+}
+#whale
+{
+    z-index:-5;
+    position: fixed;
+    top:0;
+    left:0;
+    display:none;
+}

@@ -15,12 +15,10 @@ function checkKey(e) {
 
 
    if (e.keyCode == '37') {
-       if(xWhale-130>0)
-        xWhale=xWhale-5;
+      xWhale=xWhale-5;
       directionLeft=false;
     }
     else if (e.keyCode == '39') {
-        if(xWhale+130<800)
       xWhale=xWhale+5;
       directionLeft=true;
     }
@@ -62,14 +60,12 @@ function draw()
       positionBall.flightTime=0;
       time=0;
       positionBall.kat= Math.random()*180+180;
+      pointDetected=false;
   }
   if(positionBall.y>420)
-  if(positionBall.x-xWhale<140&&positionBall.x-xWhale>-140)
+  if(positionBall.x-xWhale<140&&positionBall.x-xWhale>-140&&pointDetected==false)
       {
-        positionBall.flightTime=0;
-        time=0;
-        positionBall.kat= Math.random()*180+180;
-        pointDetected=false;
+          pointDetected=true;
           point++;
       }
   ctx.fillText(point,10,50);
